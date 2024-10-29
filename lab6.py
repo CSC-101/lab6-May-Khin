@@ -37,12 +37,61 @@ def selection_sort(values:list[int]) -> None:
 
 
 # Part 1
-
+#sort a list of book objects in ascending order based on their titles.
+#input: a list of book objects, where each book object has a title attribute.
+#output: the input list, book_list, sorted in-place by the titles of the books in ascending order.
+def selection_sort_books(book_list: list):
+    for i in range(len(book_list)):
+        index = i
+        for j in range(i + 1, len(book_list)):
+            if book_list[j].title < book_list[index].title:
+                index = j
+        temp = book_list[i]
+        book_list[i] = book_list[index]
+        book_list[index] = temp
+        
 
 # Part 2
+#swap the case of each character(lowercase letters to uppercase and uppercase letters to lowercase)
+#input: string containing characters of different cases.
+#output: a new string with the cases of all characters swapped(lowercase letters to uppercase and uppercase letters to lowercase)
+def swap_case(input:str) -> str:
+    result = []
+    for i in input:
+        if i.islower():
+            result.append(i.upper())
+        elif i.isupper():
+            result.append(i.lower())
+        else:
+            result.append(i)
+    return ''.join(result)
 
 
 # Part 3
+#replaces every occurrence of `old` character in `input_str` with `new` character.
+#input: input_str, old:str, new:str
+#output: str: The new string with `old` replaced by `new` characters.
+def str_translate(input_str, old, new):
+    result = []
+    for i in input_str:
+        if i == old:
+            result.append(new)
+        else:
+            result.append(i)
+    return ''.join(result)
+
 
 
 # Part 4
+#Count how many times each word appears in a string
+#input: a string containing words separated by spaces
+#output: a dictionary mapping each word to its count
+def histogram(string):
+    word_counts = {}
+    words = string.split()
+    for i in words:
+        if i in word_counts:
+            word_counts[i] += 1
+        else:
+            word_counts[i] = 1
+    return word_counts
